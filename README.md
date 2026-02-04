@@ -4,7 +4,22 @@
 
 # Attributs
 
-Utilisation du `v-bind` pour rendre un attribut html réactif. Raccourcis en écrivant `:`. Ex avec l'attribut style : `v-bind:style` ; `:style="\`color: ${variable}\`;"`.
+Utilisation du `v-bind` pour rendre un attribut html réactif. Raccourcis en écrivant `:`. Ex avec l'attribut style : `v-bind:style`, `:style` ; `:style="'color: ${variable}';"`.
+
+# Variables réactives
+
+De base, les variables ne sont pas réactives (afin d'éviter que le framework ne regarde tout en continu - perte de performances). ⭢ Il faut donc préciser les variables réactives. Notamment avec `ref()`.
+
+Pour faire un calcul entre diff var qui doit être réactif (maj en continu), utilisation de `computed`.
+
+```js
+const var1 = 18
+const var2 = 16
+
+const test = computed(() => {
+  return var1 + var2
+})
+```
 
 # Structure
 
