@@ -8,9 +8,15 @@
 
 Utilisation du `v-bind` pour rendre un attribut html réactif. Raccourcis en écrivant `:`. Ex avec l'attribut style : `v-bind:style`, `:style` ; `:style="'color: ${variable}';"`.
 
-### Autres
+### If, else, show
 
 `v-if`, `v-else`, `v-show` (gère uniquement la propr CSS display de l'élément).
+
+### Boucles
+
+```html
+<li v-for="(value, key) in notes" :key="index">{{ value }}</li>
+```
 
 # Variables réactives
 

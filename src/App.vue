@@ -5,9 +5,13 @@
   const sousmenu2 = ref(false)
   const sousmenu3 = ref(false)
 
-  const note1 = 8
-  const note2 = 17
-  const note3 = 13
+  const notes = [
+    { field: 'reseaux', value: 8 },
+    { field: 'backend', value: 17 },
+    { field: 'services', value: 13 },
+    { field: 'infra', value: 6 },
+    { field: 'frontend', value: 20 }
+  ]
 </script>
 
 <template>
@@ -23,9 +27,11 @@
 
   <h2>Notes</h2>
   <ul>
-    <li>{{ note1 }} <span>({{ note1 > 10 ? 'bonne' : 'mauvaise' }} note)</span></li>
-    <li>{{ note2 }} <span>({{ note2 > 10 ? 'bonne' : 'mauvaise' }} note)</span></li>
-    <li>{{ note3 }} <span>({{ note3 > 10 ? 'bonne' : 'mauvaise' }} note)</span></li>
+    <li v-for="(note, index) in notes" :key="index">
+      <p :style="`color: ${note.value > 10 ? `green` : `red`}`">
+        {{ index+1 }} - {{ note.field }} : {{ note.value }} <span>({{ note.value > 10 ? 'bonne' : 'mauvaise' }} note)</span>
+      </p>
+    </li>
   </ul>
 </template>
 
