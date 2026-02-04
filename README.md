@@ -10,7 +10,7 @@ Utilisation du `v-bind` pour rendre un attribut html réactif. Raccourcis en éc
 
 ### Autres
 
-`v-if`, `v-else`.
+`v-if`, `v-else`, `v-show` (gère uniquement la propr CSS display de l'élément).
 
 # Variables réactives
 
