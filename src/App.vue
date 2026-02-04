@@ -1,12 +1,14 @@
 <script setup>
+  const username = 'Ulysse'
 </script>
 
 <template>
-  <h1>Hello world TD - Seance 3 : routes</h1>
+  <h1>MMI World</h1>
 
-  <router-link to="/">Accueil</router-link>
-  <router-link to="/about">About</router-link>
-  <router-link to="/contact">Contact</router-link>
+  <router-link :to="{name: 'home'}">Home</router-link>
+  <router-link :to="{name: 'about'}">About</router-link>
+  <router-link :to="{name: 'user', params: {username: username}}">User</router-link>
+  <router-link :to="{name: 'countries'}">Countries</router-link>
 
   <router-view></router-view>
 </template>
