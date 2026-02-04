@@ -33,6 +33,29 @@ const test = computed(() => {
 })
 ```
 
+# Router
+
+```html
+{# Lien vers une page #}
+<router-link to="/">Accueil</router-link>
+
+{# Zone de rendu des composants du router #}
+<router-view></router-view>
+```
+
+Le fichier `/src/router/index.js` :
+
+```js
+const router = createRouter({
+  routes: [
+    {
+      path: '/',
+      component: HomeView,
+    },
+  ],
+})
+```
+
 # Structure
 
 `index.html` ⭢ `main.js` ⭢ `App.vue` ⭢ `HomeView.vue`.
