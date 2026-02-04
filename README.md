@@ -1,10 +1,16 @@
-# Vue js, MMI module
+# Vue js (3), compo API, MMI module
 
 [![Langages used](https://skillicons.dev/icons?i=nodejs,vue,vite)](https://skillicons.dev)
 
 # Attributs
 
+### Le v-bind
+
 Utilisation du `v-bind` pour rendre un attribut html réactif. Raccourcis en écrivant `:`. Ex avec l'attribut style : `v-bind:style`, `:style` ; `:style="'color: ${variable}';"`.
+
+### Autres
+
+`v-if`, `v-else`.
 
 # Variables réactives
 

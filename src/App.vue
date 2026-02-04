@@ -1,19 +1,16 @@
 <script setup>
-  import Notes from '@/components/Notes.vue'
+  import { ref } from 'vue';
 
-  const symfony = 18
-  const integration = 16
-  const reseau = 13
+  const isVisible = ref(false)
 </script>
 
 <template>
-  <h1>Résultats du S3</h1>
-  
-  <Notes />
+  <h1>Hello world TD</h1>
+
+  <button @click="isVisible = !isVisible">Rendre visible</button>
+
+  <p v-if="isVisible">Je suis le texte caché</p>
 </template>
 
 <style scoped>
-  li {
-    color: red;
-  }
 </style>
