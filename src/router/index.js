@@ -35,7 +35,7 @@ const router = createRouter({
       component: CountriesView,
     },
     {
-      path: '/countries/:name',
+      path: '/countries/:name/:capital',
       name: 'country',
       component: CountryDetailsView,
     },

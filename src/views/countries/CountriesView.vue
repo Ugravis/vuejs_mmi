@@ -20,7 +20,7 @@
     <p>
       {{ country.flag }} {{ country.name }} 
       
-      <router-link :to="{name: 'country', params: {name: country.name}}">
+      <router-link :to="{name: 'country', params: {name: country.name, capital: country.capital}}">
         Voir plus
       </router-link>
     </p>
