@@ -33,7 +33,19 @@ const test = computed(() => {
 })
 ```
 
+# Manipulation DOM
+
+De manière conventionelle, utiliser `onMounted()` pour réaliser toutes les actions exécutées au chargement de la page (appels de fonctions, etc).
+
+```js
+onMounted(() => {
+  console.log('Component loaded')
+})
+```
+
 # Router
+
+Dans un component :
 
 ```html
 {# Lien vers une page #}
@@ -56,11 +68,35 @@ const router = createRouter({
 })
 ```
 
+# Composants
+
+Composants, avec utilisation de variables - récupération avec `defineProps()`.
+
+```html
+{# views/HomeView.vue #}
+
+<template>
+  <article var1="Super article" />
+</template>
+
+{# components/Article.vue #}
+
+<script setup>
+  defineProprs({
+    var1: String,
+  })
+</script>
+
+<template>
+  <h1>I'm the article: {{ var1 }}</h1>
+</template>
+```
+
 # Structure
 
 `index.html` ⭢ `main.js` ⭢ `App.vue` ⭢ `HomeView.vue`.
 
-## Vue file
+### Vue file
 
 ```html
 <templatee>
@@ -76,7 +112,7 @@ const router = createRouter({
 </style>
 ```
 
-## Basic tree
+### Basic tree
 
 ```
 vuejs_mmi
@@ -94,4 +130,34 @@ vuejs_mmi
    └─ views
       └─ HomeView.vue
 
+```
+
+# Exemples
+
+Utilisation de `onMounted` et `ref` :
+
+```html
+<script setup>
+  import { onMounted, ref } from 'vue'
+
+  let data = ref('')
+
+  onMounted(async () => {
+    data.value = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+      .then((response) => response.json())
+      .then((data) => {
+        return data
+      })
+  })
+</script>
+
+<template>
+  <div v-if="data">
+    <p>{{ data.title }}</p>
+  </div>
+
+  <div v-else>
+    <p>Loading...</p>
+  </div>
+</template>
 ```

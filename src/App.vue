@@ -10,6 +10,8 @@
   <router-link :to="{name: 'user', params: {username: username}}">User</router-link>
   <router-link :to="{name: 'countries'}">Countries</router-link>
 
+  <hr>
+
   <router-view></router-view>
 </template>
 
