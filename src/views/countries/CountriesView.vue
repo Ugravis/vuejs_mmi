@@ -1,11 +1,11 @@
 <script setup>
   import CountryCard from '@/components/CountryCard.vue';
-import { onMounted, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
 
   const countries = ref([])
 
   onMounted(async () => {
-    countries.value = await fetch('https://restcountries.com/v3.1/all?fields=name')
+    countries.value = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2,capital,region,population,flags,currencies,languages')
       .then((res) => res.json())
       .then((data) => {
         return data
