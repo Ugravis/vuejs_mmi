@@ -1,28 +1,24 @@
 <script setup>
-  const countriesMap = [
-    { name: 'France', capital: 'Paris', flag: '🇫🇷' },
-    { name: 'Espagne', capital: 'Madrid', flag: '🇪🇸' },
-    { name: 'Italie', capital: 'Rome', flag: '🇮🇹' },
-    { name: 'Allemagne', capital: 'Berlin', flag: '🇩🇪' },
-    { name: 'Belgique', capital: 'Bruxelles', flag: '🇧🇪' },
-    { name: 'Luxembourg', capital: 'Luxembourg', flag: '🇱🇺' },
-    { name: 'Pays-Bas', capital: 'Amsterdam', flag: '🇳🇱' },
-    { name: 'Danemark', capital: 'Copenhague', flag: '🇩🇰' },
-    { name: 'Slovénie', capital: 'Ljubljana', flag: '🇸🇮' },
-    { name: 'Suisse', capital: 'Berne', flag: '🇨🇭' }
-  ];
+  import CountryCard from '@/components/CountryCard.vue';
+import { onMounted, ref } from 'vue';
+
+  const countries = ref([])
+
+  onMounted(async () => {
+    countries.value = await fetch('https://restcountries.com/v3.1/all?fields=name')
+      .then((res) => res.json())
+      .then((data) => {
+        return data
+      })
+  })
 </script>
 
 <template>
   <h2>Countries page</h2>
+  <hr>
 
-  <div v-for="(country, index) in countriesMap" :key="index">
-    <p>
-      {{ country.flag }} {{ country.name }} 
-      
-      <router-link :to="{name: 'country', params: {name: country.name, capital: country.capital}}">
-        Voir plus
-      </router-link>
-    </p>
+  <div v-for="(country, index) in countries" :key="index">
+    <country-card :country="country" />
+    <hr>
   </div>
 </template>

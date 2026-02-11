@@ -144,7 +144,7 @@ Utilisation de `onMounted` et `ref` :
 
   onMounted(async () => {
     data.value = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         return data
       })
