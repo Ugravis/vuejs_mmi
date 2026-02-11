@@ -17,13 +17,9 @@
     <p><b>Nom officiel</b> : {{ country.name.official }}</p>
     <p><b>Population</b> : {{ country.population }}</p>
 
-    <p v-for="(currency, currencyIndex) in country.currencies" :key="currencyIndex">
-      <b>Monnaie</b> : {{ currency.name }} ({{ currency.symbol }})
-    </p>
+    <p><b>Monnaie</b> : {{ Object.values(country.currencies).map(c => `${c.name} (${c.symbol})`).join(', ') }}</p>
 
-    <p v-for="(language, languageIndex) in country.languages" :key="languageIndex">
-      <b>Langues</b> : {{ language }}
-    </p>
+    <p><b>Langues</b> : {{ Object.values(country.languages).join(', ') }}</p>
   </div>
 </template>
 
