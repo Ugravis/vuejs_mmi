@@ -15,16 +15,19 @@
   <div>
     <p><b>Nom générique</b> : {{ country.name.common }}</p>
     <p><b>Nom officiel</b> : {{ country.name.official }}</p>
+    <p><b>Capitale</b> : {{ country.capital[0] }}</p>
     <p><b>Population</b> : {{ country.population }}</p>
 
     <p><b>Monnaie</b> : {{ Object.values(country.currencies).map(c => `${c.name} (${c.symbol})`).join(', ') }}</p>
 
     <p><b>Langues</b> : {{ Object.values(country.languages).join(', ') }}</p>
+
+    <router-link :to="{name: 'country', params: {countryCommonName: country.name.common}}">Voir plus</router-link>
   </div>
 </template>
 
 <style scoped>
   img {
-    width: 25px;
+    width: 30px;
   }
 </style>
