@@ -50,13 +50,13 @@ onMounted(() => {
 Envoi avec `<Child :data1="var1" />`, puis récupération avec `defineProps()` (2 écritures possibles).
 
 ```html
-{# Parent: views/HomeView.vue #}
+<!-- Parent: views/HomeView.vue -->
 
 <template>
   <Child var1="hello world" />
 </template>
 
-{# Child: components/Article.vue #}
+<!-- Child: components/Article.vue -->
 
 <script setup>
   // Ecriture 1
@@ -77,7 +77,7 @@ Envoi avec `<Child :data1="var1" />`, puis récupération avec `defineProps()` (
 Envoi avec `emit()`, puis récupération avec `<Child @eventName="handle">`.
 
 ```html
-{# Child: components/Article.vue #}
+<!-- Child: components/Article.vue -->
 
 <template>
   <input
@@ -91,7 +91,7 @@ Envoi avec `emit()`, puis récupération avec `<Child @eventName="handle">`.
   const emit = defineEmits(['input-event'])
 </script>
 
-{# Parent: views/HomeView.vue #}
+<!-- Parent: views/HomeView.vue -->
 
 <template>
   <Child @input-event="handle" />
@@ -103,10 +103,10 @@ Envoi avec `emit()`, puis récupération avec `<Child @eventName="handle">`.
 Dans un component :
 
 ```html
-{# Lien vers une page #}
+<!-- Lien vers une page -->
 <router-link to="/">Accueil</router-link>
 
-{# Zone de rendu des composants du router #}
+<!-- Zone de rendu des composants du router -->
 <router-view></router-view>
 ```
 
@@ -193,4 +193,4 @@ Utilisation de `onMounted` et `ref` :
 </template>
 ```
 
-ajouts : watch (pour faire en sorte qu'une var soit tjr dynamique après un traitement JS)
+ajouts : watch (pour faire en sorte qu'une var soit tjr dynamique après un traitement JS) - (à voir la diff avec computed)
