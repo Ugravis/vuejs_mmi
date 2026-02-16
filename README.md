@@ -43,6 +43,61 @@ onMounted(() => {
 })
 ```
 
+# Transit de données
+
+### Parent → enfant
+
+Envoi avec `<Child :data1="var1" />`, puis récupération avec `defineProps()` (2 écritures possibles).
+
+```html
+{# Parent: views/HomeView.vue #}
+
+<template>
+  <Child var1="hello world" />
+</template>
+
+{# Child: components/Article.vue #}
+
+<script setup>
+  // Ecriture 1
+  defineProps({
+    var1: String,
+  })
+  // Ecriture 2
+  const proprs = defineProps(['var1'])
+</script>
+
+<template>
+  <h1>Message received: {{ var1 }}</h1>
+</template>
+```
+
+### Enfant → parent
+
+Envoi avec `emit()`, puis récupération avec `<Child @eventName="handle">`.
+
+```html
+{# Child: components/Article.vue #}
+
+<template>
+  <input
+    type="text"
+    :v-model="data1"
+    @change="emit("input-event", data1)"
+  >
+</template>
+
+<script>
+  const emit = defineEmits(['input-event'])
+</script>
+
+{# Parent: views/HomeView.vue #}
+
+<template>
+  <Child @input-event="handle" />
+</template>
+```
+
 # Router
 
 Dans un component :
@@ -66,30 +121,6 @@ const router = createRouter({
     },
   ],
 })
-```
-
-# Composants
-
-Composants, avec utilisation de variables - récupération avec `defineProps()`.
-
-```html
-{# views/HomeView.vue #}
-
-<template>
-  <article var1="Super article" />
-</template>
-
-{# components/Article.vue #}
-
-<script setup>
-  defineProprs({
-    var1: String,
-  })
-</script>
-
-<template>
-  <h1>I'm the article: {{ var1 }}</h1>
-</template>
 ```
 
 # Structure
@@ -161,3 +192,5 @@ Utilisation de `onMounted` et `ref` :
   </div>
 </template>
 ```
+
+ajouts : watch (pour faire en sorte qu'une var soit tjr dynamique après un traitement JS)
