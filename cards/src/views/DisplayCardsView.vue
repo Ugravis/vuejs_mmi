@@ -11,6 +11,7 @@
   const cardsData = ref<Card[]>([])
   const totalPages = ref(0)
   const itemsPerPage = 100
+  const displayImages = ref(true)
 
   const currentPage = computed(() => Number(route.query.page) || 1)
   
@@ -40,16 +41,31 @@
       <p v-if="!cardsData.length">Chargement...</p>
 
       <div v-else>
-        <PaginationComponent
-          :totalPages="totalPages"
-          :currentPage="currentPage"
-        />
-        
+        <div class="actions-box">
+          <div>
+            <input
+              @change="displayImages = !displayImages"
+              :checked="displayImages"
+              id="displayImages"
+              type="checkbox"
+            />
+            <label for="displayImages">Images</label>
+          </div>
+
+          <span>|</span>
+
+          <PaginationComponent
+            :totalPages="totalPages"
+            :currentPage="currentPage"
+          />
+        </div>
+
         <div class="cards-box">
           <CardComponent 
             v-for="(card, index) in cardsData" 
             :key="index" 
             :cardData="card"
+            :displayImage="displayImages"
           />
         </div>
 
@@ -73,5 +89,11 @@
     display: flex;
     justify-content: center;
     gap: 12px;
+  }
+
+  .actions-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
 </style>

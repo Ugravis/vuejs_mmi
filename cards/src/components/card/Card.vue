@@ -3,6 +3,7 @@
 
   const props = defineProps<{
     cardData: Card
+    displayImage: boolean
   }>()
 
   const cardPlaceholder: string = `https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=0&type=card`
@@ -10,9 +11,9 @@
 
 <template>
   <div class="card-box">
-    <img :src="cardData.imageUrl ?? cardPlaceholder" :alt="cardData.name">
+    <img v-if="displayImage" :src="cardData.imageUrl ?? cardPlaceholder" :alt="cardData.name">
 
-    <div>
+    <div class="right-part">
       <h3>{{ cardData.name }}</h3>
 
       <div>
@@ -31,9 +32,11 @@
 
   .card-box {
     display: flex;
-    gap: 16px;
-
     border: 2px solid #000;
     border-radius: 12px;
+  }
+
+  .right-part {
+    margin-left: 16px;
   }
 </style>
