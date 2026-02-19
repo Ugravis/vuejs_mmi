@@ -4,9 +4,9 @@
   import { type Card } from '../utils/types/magicApi.types'
   import config from '../utils/config/config'
   import CardComponent from '../components/card/Card.vue'
+  import PaginationComponent from '../components/layout/Pagination.vue'
 
   const route = useRoute()
-  const router = useRouter()
 
   const cardsData = ref<Card[]>([])
   const totalPages = ref(0)
@@ -30,11 +30,6 @@
     }
   }
 
-  function changePage(newPage: number) {
-    router.push({ query: { ...route.query, page: newPage } })
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   onMounted(fetchCards)
   watch(() => route.query.page, fetchCards)
 </script>
@@ -45,6 +40,11 @@
       <p v-if="!cardsData.length">Chargement...</p>
 
       <div v-else>
+        <PaginationComponent
+          :totalPages="totalPages"
+          :currentPage="currentPage"
+        />
+        
         <div class="cards-box">
           <CardComponent 
             v-for="(card, index) in cardsData" 
@@ -53,23 +53,10 @@
           />
         </div>
 
-        <div class="pagination">
-          <button
-            :disabled="currentPage <= 1"
-            @click="changePage(currentPage - 1)"
-          >
-            ←
-          </button>
-
-          <span>Page {{ currentPage }} / {{ totalPages }}</span>
-
-          <button
-            :disabled="currentPage >= totalPages"
-            @click="changePage(currentPage + 1)"
-          >
-            →
-          </button>
-        </div>
+        <PaginationComponent
+          :totalPages="totalPages"
+          :currentPage="currentPage"
+        />
       </div>
   </div>
 </template>

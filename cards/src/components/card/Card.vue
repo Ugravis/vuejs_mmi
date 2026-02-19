@@ -16,7 +16,7 @@
       <h3>{{ cardData.name }}</h3>
 
       <div>
-        <p><b>Couleurs :</b> {{ cardData.colors.join(', ') }}.</p>
+        <p><b>Couleurs :</b> {{ cardData.colors ? cardData.colors.join(', ') : 'Aucune' }}.</p>
         <p><b>Type :</b> {{ cardData.type }}.</p>
         <p><b>Coût en mana :</b> {{ cardData.manaCost }}.</p>
       </div>
