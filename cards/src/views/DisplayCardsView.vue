@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, onMounted, ref, watch } from 'vue'
-  import { useRoute, useRouter } from 'vue-router'
+  import { useRoute } from 'vue-router'
   import { type Card } from '../utils/types/magicApi.types'
   import config from '../utils/config/config'
   import CardComponent from '../components/card/Card.vue'
@@ -26,9 +26,7 @@
       const data = await res.json()
       cardsData.value = data.cards
 
-    } catch(e) {
-      console.error(`API error: `, e)
-    }
+    } catch(e) { console.error(`API error: `, e) }
   }
 
   onMounted(fetchCards)

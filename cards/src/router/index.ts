@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SearchView from '../views/SearchView.vue'
 import DisplayCardsView from '../views/DisplayCardsView.vue'
 import DisplaySetsView from '../views/DisplaySetsView.vue'
+import CardView from '../views/CardView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,10 @@ const router = createRouter({
       path: '/cartes',
       name: 'cards',
       component: DisplayCardsView
+    }, {
+      path: '/cartes/:id',
+      name: 'card',
+      component: CardView
     }, {
       path: '/sets',
       name: 'sets',

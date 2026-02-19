@@ -20,6 +20,7 @@
         <p><b>Couleurs :</b> {{ cardData.colors ? cardData.colors.join(', ') : 'Aucune' }}.</p>
         <p><b>Type :</b> {{ cardData.type }}.</p>
         <p><b>Coût en mana :</b> {{ cardData.manaCost }}.</p>
+        <RouterLink :to="{ name: 'card', params: { id: cardData.id } }">Voir plus</RouterLink>
       </div>
     </div>
   </div>
