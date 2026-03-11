@@ -7,8 +7,7 @@
 
   <router-link :to="{name: 'home'}">Home</router-link>
   <router-link :to="{name: 'about'}">About</router-link>
-  <router-link :to="{name: 'user', params: {username: username}}">User</router-link>
-  <router-link :to="{name: 'countries'}">Countries</router-link>
+  <router-link :to="{name: 'suppliers'}">Suppliers</router-link>
 
   <hr>
 
