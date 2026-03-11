@@ -17,9 +17,11 @@
 </script>
 
 <template>
-  <h1>Suppliers</h1>
+  <h2>Suppliers ({{ suppliers.length }})</h2>
 
-  <div v-for="(supplier, supplierIndex) in suppliers" :key="supplierIndex">
+  <div v-for="(supplier, supplierIndex) in suppliers" :key="supplierIndex"><hr>
     <Supplier :supplier="supplier" />
-  </div>
+  </div><hr>
+
+  <RouterLink to="suppliers/create">Ajouter un fournisseur</RouterLink>
 </template>

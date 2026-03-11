@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>MMI World</h1>
+  <h1>MMI - Vuejs with API Platform</h1>
 
   <router-link :to="{name: 'home'}">Home</router-link>
   <router-link :to="{name: 'about'}">About</router-link>
